@@ -39,6 +39,10 @@ nav a {
   padding: 5rem 2rem;
 }
 
+.hero h1 {
+  color: #1e2a38;
+}
+
 .hero-buttons .btn {
   background: #ff6b35;
   color: white;
@@ -51,6 +55,7 @@ nav a {
 .btn.secondary {
   background: transparent;
   border: 2px solid white;
+  color: #1e2a38;
 }
 
 .section {

@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tower Sites Inc.</title>
   <link rel="stylesheet" href="styles.css" />
+  
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
 </head>
 <body>
   <header>
@@ -39,7 +46,8 @@
     <h2>Site Portfolio</h2>
     <p>Explore our growing network of tower sites across the region.</p>
     <div class="map-container">
-      <iframe
+        <div id="map" style="height: 500px; margin-top: 2rem;"></div>
+      <!-- <iframe
         src="https://www.google.com/maps/d/embed?mid=1nAeM56Yx9FWN7IncFp1O0u-dFwdpeGY&ehbc=2E312F"
         width="100%"
         height="450"
@@ -47,7 +55,7 @@
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      </iframe> -->
     </div>
   </section>
 
@@ -84,5 +92,29 @@
   <footer>
     <p>&copy; 2025 Tower Sites Inc. All rights reserved.</p>
   </footer>
+
+  <script>
+    const map = L.map('map').setView([38.44, -122.71], 10); // Adjust center/zoom
+  
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  
+    // Load GeoJSON (replace with your actual file or inline object)
+    fetch('sites.geojson')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          onEachFeature: function (feature, layer) {
+            const props = feature.properties;
+            layer.bindPopup(`
+              <strong>${props.name}</strong><br>
+              ${props.description}<br>
+              <a href="${props.link}" target="_blank">More info</a>
+            `);
+          }
+        }).addTo(map);
+      });
+  </script>
 </body>
 </html>

@@ -59,28 +59,36 @@ nav a {
 }
 
 .hero {
-    background: #f5f5f5;
-    color: white;
-    text-align: center;
-    padding: 5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
+  background: #f5f5f5;
+  color: white;
+  text-align: center;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  /* Remove or change justify-content: center; */
+  justify-content: flex-start; /* or remove this line entirely */
+  align-items: center;
+  min-height: 10vh;
 }
 
 .hero h1 {
-  color: #1e2a38;
+color: #1e2a38;
+margin-top: 0; /* Remove default top margin */
+margin-bottom: 0.5rem; /* Reduce bottom margin */
+}
+
+.hero p {
+margin-top: 0;
+margin-bottom: 1rem;
 }
 
 .hero-buttons .btn {
-  background: #ff6b35;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  margin: 1rem;
-  border-radius: 5px;
-  text-decoration: none;
+background: #ff6b35;
+color: white;
+padding: 0.75rem 1.5rem;
+margin: 0.5rem; /* Reduce from 1rem */
+border-radius: 5px;
+text-decoration: none;
 }
 
 .btn.secondary {

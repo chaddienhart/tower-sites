@@ -110,11 +110,17 @@
         L.geoJSON(data, {
           onEachFeature: function (feature, layer) {
             const props = feature.properties;
-            layer.bindPopup(`
-              <strong>${props.name}</strong><br>
-              ${props.description}<br>
-              <a href="${props.link}" target="_blank">More info</a>
-            `);
+            let popupContent = `<strong>${props.name || 'Unnamed Site'}</strong>`;
+            
+            if (props.description) {
+              popupContent += `<br>${props.description}`;
+            }
+            
+            if (props.link) {
+              popupContent += `<br><a href="${props.link}" target="_blank">More info</a>`;
+            }
+            
+            layer.bindPopup(popupContent);
           }
         }).addTo(map);
       });

@@ -132,6 +132,25 @@ text-decoration: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+.contact-info {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+.contact-info p {
+  margin: 1rem 0;
+}
+
+.contact-info a {
+  color: #ff6b35;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
 form {
   display: flex;
   flex-direction: column;

@@ -251,12 +251,15 @@ footer {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
+    margin: 0 auto;
+    align-items: center;
   }
 
   .hero-buttons .btn {
     width: 100%;
     margin: 0.25rem 0;
+    text-align: center;
   }
 
   .section {
@@ -316,6 +319,10 @@ footer {
 
   nav ul li {
     padding: 0.25rem 0;
+  }
+
+  .hero-buttons {
+    max-width: 220px;
   }
 
   .section {

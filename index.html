@@ -103,8 +103,8 @@
     // Determine minZoom based on screen size
     // Mobile: minZoom 3, Desktop: minZoom 5
     const isMobile = window.innerWidth <= 768;
-    const minZoom = isMobile ? 3 : 5;
-    const initialZoom = isMobile ? 3 : 5;
+    const minZoom = isMobile ? 3 : 4;
+    const initialZoom = isMobile ? 3 : 4;
     
     const map = L.map('map', { 
       minZoom: minZoom, 

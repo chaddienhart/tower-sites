@@ -100,17 +100,35 @@
   </footer>
 
   <script>
-    //const map = L.map('map', { minZoom: 5 }).setView([ 41.1961, -90.4178 ], 5); // Adjust center/zoom 43.05, -89.48
-    const map = L.map('map', { minZoom: 3, maxBounds: [
+    // Determine minZoom based on screen size
+    // Mobile: minZoom 3, Desktop: minZoom 5
+    const isMobile = window.innerWidth <= 768;
+    const minZoom = isMobile ? 3 : 5;
+    const initialZoom = isMobile ? 3 : 5;
+    
+    const map = L.map('map', { 
+      minZoom: minZoom, 
+      maxBounds: [
         [32.50, -120.74], // South-West corner (Lat, Lng)
         [49.08, -74.26]  // North-East corner (Lat, Lng)
-    ],
-    maxBoundsViscosity: 0.5 // 1.0 = Makes the edge solid so you can't drag past it at all, 0.5 = allows some dragging past the edges
-    }).setView([ 43.05, -89.48 ], 3); // 3 = zoom level, 43.05, -89.48 = center of the map
+      ],
+      maxBoundsViscosity: 0.5 // 1.0 = Makes the edge solid so you can't drag past it at all, 0.5 = allows some dragging past the edges
+    }).setView([ 43.05, -89.48 ], initialZoom); // Dynamic zoom level, 43.05, -89.48 = center of the map
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
+    
+    // Update minZoom when window is resized
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        const newIsMobile = window.innerWidth <= 768;
+        const newMinZoom = newIsMobile ? 3 : 5;
+        map.setMinZoom(newMinZoom);
+      }, 250); // Debounce resize events
+    });
   
     // Load GeoJSON (replace with your actual file or inline object)
     fetch('sites.geojson')

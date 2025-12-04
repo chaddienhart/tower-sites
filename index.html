@@ -109,8 +109,8 @@
     const map = L.map('map', { 
       minZoom: minZoom, 
       maxBounds: [
-        [32.50, -120.74], // South-West corner (Lat, Lng)
-        [49.08, -74.26]  // North-East corner (Lat, Lng)
+        [25.0, -126.0], // South-West corner (Lat, Lng)
+        [50.0, -70.0]  // North-East corner (Lat, Lng)
       ],
       maxBoundsViscosity: 0.5 // 1.0 = Makes the edge solid so you can't drag past it at all, 0.5 = allows some dragging past the edges
     }).setView([ 43.05, -89.48 ], initialZoom); // Dynamic zoom level, 43.05, -89.48 = center of the map

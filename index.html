@@ -39,6 +39,9 @@
   <section id="portfolio" class="section">
     <h2>Site Portfolio</h2>
     <p>Explore our growing network of tower sites across the United States.</p>
+    <div class="map-controls">
+      <button id="zoom-wi-il" class="map-zoom-btn">Zoom to Wisconsin & Illinois</button>
+    </div>
     <div class="map-container">
         <div id="map" style="height: 500px; margin-top: 2rem; width: 100%;"></div>
       <!-- <iframe
@@ -125,7 +128,7 @@
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function() {
         const newIsMobile = window.innerWidth <= 768;
-        const newMinZoom = newIsMobile ? 3 : 5;
+        const newMinZoom = newIsMobile ? 3 : 4;
         map.setMinZoom(newMinZoom);
       }, 250); // Debounce resize events
     });
@@ -151,6 +154,21 @@
           }
         }).addTo(map);
       });
+    
+    // Zoom to Wisconsin and Illinois button
+    document.getElementById('zoom-wi-il').addEventListener('click', function() {
+      // Bounding box for Wisconsin and Illinois
+      // Wisconsin: ~42.5°N to 47°N, -92.9°W to -87.0°W
+      // Illinois: ~37°N to 42.5°N, -91.5°W to -87.5°W
+      const wiIlBounds = [
+        [37.0, -92.9], // Southwest corner (South, West)
+        [47.0, -87.0]  // Northeast corner (North, East)
+      ];
+      map.fitBounds(wiIlBounds, {
+        padding: [50, 50], // Add some padding around the bounds
+        maxZoom: 7 // Don't zoom in too close
+      });
+    });
   </script>
 </body>
 </html>

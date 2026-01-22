@@ -201,6 +201,19 @@ form {
   margin: auto;
 }
 
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+form label input,
+form label textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .form-message {
   max-width: 500px;
   margin: 0 auto 1rem;

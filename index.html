@@ -95,12 +95,13 @@
       <!-- <input type="hidden" name="redirect" value="https://tower-sites.netlify.app/success.html"> --> 
       <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
     
-      <label>Name: <input type="text" name="name" required /></label>
-      <label>Email: <input type="email" name="email" required /></label>
-      <label>Message: <textarea name="message" required></textarea></label>
+      <label>Name: <input type="text" name="name" placeholder="Your full name" required /></label>
+      <label>Email: <input type="email" name="email" placeholder="your.email@example.com" required /></label>
+      <label>Message: <textarea name="message" placeholder="Please include the site you are interested in information about..." required></textarea></label>
       <button type="submit">Send Message</button>
-    
+      <div class="h-captcha" data-captcha="true"></div>
     </form>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
     <p class="back-to-top"><a href="#top">↑ Back to Top</a></p>
   </section>
 
